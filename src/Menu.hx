@@ -19,46 +19,16 @@ class Menu extends Sprite
         var startGameBubble = new Bubble(Root.assets.getTexture("bubble2"), "Start Game", 1, true);
         startGameBubble.x = 100;
         startGameBubble.y = 200;
-        addChild(startGameBubble);
-        startGameBubble.addEventListener(TouchEvent.TOUCH, startGame);
+        addChild(startGameBubble);        
 
         var tutorialBubble = new Bubble(Root.assets.getTexture("bubble1"), "Tutorial", 1, true);
         tutorialBubble.x = 500;
         tutorialBubble.y = 200;
-        addChild(tutorialBubble);
-        tutorialBubble.addEventListener(TouchEvent.TOUCH, startTutorial);
+        addChild(tutorialBubble);        
 
         var creditsBubble = new Bubble(Root.assets.getTexture("bubble3"), "Credits", 1, true);
         creditsBubble.x = 900;
         creditsBubble.y = 200;
-        addChild(creditsBubble);
-        creditsBubble.addEventListener(TouchEvent.TOUCH, startCredits);
-    }
-
-    private function startGame(e:TouchEvent):Void
-    {
-        var touch = e.getTouch(stage, TouchPhase.ENDED);
-        if (touch != null)
-        {
-            // Start the game
-        }       
-    }
-
-    private function startTutorial(e:TouchEvent):Void
-    {
-        var touch = e.getTouch(stage, TouchPhase.ENDED);
-        if (touch != null)
-        {
-            // Start the tutorial
-        }       
-    }
-
-    private function startCredits(e:TouchEvent):Void
-    {
-        var touch = e.getTouch(stage, TouchPhase.ENDED);
-        if (touch != null)
-        {
-            // Start the credits
-        }       
+        addChild(creditsBubble);        
     }
 }
