@@ -16,19 +16,19 @@ class Menu extends Sprite
         super();
         this.rootSprite = rootSprite;
         
-        var startGameBubble = new Bubble(Root.assets.getTexture("bubble2"), "Start Game");
+        var startGameBubble = new Bubble(Root.assets.getTexture("bubble2"), "Start Game", 1);
         startGameBubble.x = 100;
         startGameBubble.y = 200;
         addChild(startGameBubble);
         startGameBubble.addEventListener(TouchEvent.TOUCH, startGame);
 
-        var tutorialBubble = new Bubble(Root.assets.getTexture("bubble1"), "Tutorial");
+        var tutorialBubble = new Bubble(Root.assets.getTexture("bubble1"), "Tutorial", 1);
         tutorialBubble.x = 500;
         tutorialBubble.y = 200;
         addChild(tutorialBubble);
         tutorialBubble.addEventListener(TouchEvent.TOUCH, startTutorial);
 
-        var creditsBubble = new Bubble(Root.assets.getTexture("bubble3"), "Credits");
+        var creditsBubble = new Bubble(Root.assets.getTexture("bubble3"), "Credits", 1);
         creditsBubble.x = 900;
         creditsBubble.y = 200;
         addChild(creditsBubble);
