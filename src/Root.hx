@@ -16,31 +16,22 @@ class Root extends Sprite {
     public function start(startup:Startup) {
 
         assets = new AssetManager();
-        assets.enqueue("assets/ninja.png");
-        assets.loadQueue(function onProgress(ratio:Float) {
+        assets.enqueue("assets/bubble1.png");
+        assets.enqueue("assets/bubble2.png");
+        assets.enqueue("assets/bubble3.png");
 
+        var stage = Starling.current.stage;
+        stage.color = 0x91D3FF;
+        assets.loadQueue(function onProgress(ratio:Float) {            
             if (ratio == 1) {
 
                 Starling.juggler.tween(startup.loadingBitmap, 2.0, {
                     transition: Transitions.EASE_OUT,
                         delay: 1.0,
-                        alpha: 0,
-                        onComplete: function() {
-                        startup.removeChild(startup.loadingBitmap);
-                        ninja = new Image(Root.assets.getTexture("ninja"));
-                        ninja.x = 100;
-                        ninja.y = 0;
-                        addChild(ninja);
-
-                        Starling.juggler.tween(ninja, 1.0, {
-                            transition: Transitions.EASE_OUT_BOUNCE,
-                                delay: 2.0,
-                                y: 250
-                                });
-
-                    }
-
+                        alpha: 0
                 });
+                var menu = new Menu(this);
+                this.addChild(menu);
             }
 
         });

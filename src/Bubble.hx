@@ -1,15 +1,19 @@
-import flash.textures.Texture;
-import flash.display.Image;
+import starling.text.TextField;
+import starling.utils.Color;
+import starling.textures.Texture;
+import starling.display.Sprite;
+import starling.display.Image;
 import flash.geom.Rectangle;
 import starling.core.Starling;
 
-class Bubble extends Image
+class Bubble extends Sprite
 {
-	function new(bubbleType:Int):Image
-	{
-		// TODO: Grab the type of bubble texture from an array and pass it into Super()
+	function new(tex:Texture, bubbleText:String)
+	{		
 		super();
-
-		return this;
+		var bubbleImage = new Image(tex);
+		this.addChild(bubbleImage);
+		var bubbleTextContainer = new TextField(Std.int(this.width), Std.int(this.height), bubbleText, "serif", 40, Color.WHITE);
+		this.addChild(bubbleTextContainer);
 	}
 }
