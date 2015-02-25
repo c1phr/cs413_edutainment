@@ -13,17 +13,26 @@ class Bubble extends Sprite
 	private var deltaX:Int = 0;
 	private var deltaY:Int = 0;
 	private var randomBound:Int = 5;
+	private var isMenu:Bool;
 
-	function new(tex:Texture, bubbleText:String, deltaSpeed:Int)
+	function new(tex:Texture, bubbleText:String, deltaSpeed:Int, isMenu:Bool)
 	{		
 		super();
 		this.deltaSpeed = deltaSpeed;
+		this.isMenu = isMenu;
 		var bubbleImage = new Image(tex);
 		this.addChild(bubbleImage);
 		var bubbleTextContainer = new TextField(Std.int(this.width), Std.int(this.height), bubbleText, "serif", 40, Color.WHITE);
 		this.addChild(bubbleTextContainer);
 
-        this.setRandomValues();
+		if (this.isMenu)
+		{
+			this.setRandomValues();
+		}        
+		else
+		{
+			// Move bubbles differently when in the actual game
+		}
 
 		this.addEventListener(EnterFrameEvent.ENTER_FRAME, function(event:EnterFrameEvent) {
 			updatePosition();
@@ -32,17 +41,25 @@ class Bubble extends Sprite
 
 	function updatePosition()
 	{
-		this.x += this.deltaX;
-		this.y += this.deltaY;
-
-		if (this.x < 0 || this.x > (Starling.current.stage.stageWidth - this.width))
+		if (this.isMenu)
 		{
-			this.deltaX *= -1;
+			this.x += this.deltaX;
+			this.y += this.deltaY;
+
+			if (this.x < 0 || this.x > (Starling.current.stage.stageWidth - this.width))
+			{
+				this.deltaX *= -1;
+			}
+			if (this.y < 0 || this.y > (Starling.current.stage.stageHeight - this.height))
+			{			
+				this.deltaY *= -1;
+			}
 		}
-		if (this.y < 0 || this.y > (Starling.current.stage.stageHeight - this.height))
-		{			
-			this.deltaY *= -1;
+		else
+		{
+			// Move the bubbles differently for when in the game itself
 		}
+		
 	}
 
 	function setRandomValues()
