@@ -46,7 +46,37 @@ class Startup extends Sprite {
 
     static function main() {
         var stage = flash.Lib.current.stage;
+        var PrimeList = findAllPrimes();
         stage.addChild(new Startup());
+    }
+
+    static function findAllPrimes():Array<Int>{
+        var list:Array<Int>;
+        list = new Array<Int>();
+        list[0] = 2;
+        list[1] = 3;
+        list[2] = 5;
+        var value = 6;
+        var counter = 3;
+        while(counter < 10000){
+            if(checkPrime(value, list)){
+                list[counter] = value;
+                counter++;
+            }
+            value++;
+        }
+        return list;
+    }
+
+    static function checkPrime(p:Int, list:Array<Int>):Bool{
+        var ctr = 0;
+        while(list[ctr] <= Math.sqrt(p)){
+            if(p % list[ctr] == 0){
+                return false;
+            }
+            ctr++;
+        }
+        return true;
     }
 
 }
