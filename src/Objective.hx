@@ -7,11 +7,15 @@ class Objective{
 	var AllPrimes:Array<Int>;
 	var oom:Int;
 	var TotalPossibleVals:Int;
+	var FoundValues:Array<Int>;
+	var NumFound:Int = 0;
 
 	public function new(OrderOfMagnitude:Int, Primes:Array<Int>){
 		AllPrimes = Primes;
 		Value = 0;
 		Completed = false;
+		FoundValues = new Array<Int>();
+		PossiblePrimes = new Array<Int>();
 
 		// Set the value to be of the submitted order of magnitude
 		var lowerBound:Int;
@@ -23,7 +27,6 @@ class Objective{
 		}
 
 		// Fill up Possible Primes List
-		PossiblePrimes = new Array<Int>();
 		var counter = 0;
 		while(true){
 			if(Math.sqrt(Value) <= AllPrimes[counter]){
@@ -48,6 +51,8 @@ class Objective{
 			}
 			Value = Std.int(Value / val);
 			PossiblePrimes[TotalPossibleVals] = Value;
+			FoundValues[NumFound] = val;
+			NumFound++;
 			return true;
 		} else {
 			return false;
