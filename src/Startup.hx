@@ -48,8 +48,6 @@ class Startup extends Sprite {
         var stage = flash.Lib.current.stage;
         var PrimeList = findAllPrimes();
         stage.addChild(new Startup());
-        var obj = new Objective(2, PrimeList);
-        trace(PrimeList[5]);
     }
 
     static function findAllPrimes():Array<Int>{

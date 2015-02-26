@@ -26,10 +26,11 @@ class Objective{
 		PossiblePrimes = new Array<Int>();
 		var counter = 0;
 		while(true){
-			if(Math.sqrt(Value) < AllPrimes[counter]){
+			if(Math.sqrt(Value) <= AllPrimes[counter]){
 				break;
 			}
 			PossiblePrimes[counter] = AllPrimes[counter];
+			counter++;
 		}
 		PossiblePrimes[counter] = Value;
 		TotalPossibleVals = counter;
