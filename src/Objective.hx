@@ -43,6 +43,8 @@ class Objective{
 	public function check(val:Int):Bool{
 		if(Contains(val, AllPrimes) && Value % val == 0 && Value == val){
 			Completed = true;
+			FoundValues[NumFound] = val;
+			NumFound++;
 			return true;
 		}
 		if(Value % val == 0){
