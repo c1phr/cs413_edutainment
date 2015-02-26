@@ -45,10 +45,14 @@ class Bubble extends Sprite
 
 		this.addEventListener(TouchEvent.TOUCH, function(e:TouchEvent) {
 			var touch = e.getTouch(stage, TouchPhase.ENDED);
-	        if (touch != null)
+	        if (this.isMenu && touch != null)
 	        {
 	        	// Do stuff with numbers
 	            trace(bubbleText);
+	        } 
+	        if (!this.isMenu && touch != null)
+	        {
+	        	// Do stuff with numbers
 	        } 
 		});
 	}
