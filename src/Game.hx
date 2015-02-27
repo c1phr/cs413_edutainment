@@ -88,7 +88,7 @@ class Game extends Sprite
 
 					bubble = new Bubble(Root.assets.getTexture("bubble1"), strValue, 1, false);
 					addChild(bubble);
-					bubble.x = 1400;
+					bubble.x = 800;
 					bubble.y = 100 + height;
 
 					this.addEventListener("bubbleEvent", function(e:Event) {
