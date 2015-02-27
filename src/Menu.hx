@@ -9,6 +9,7 @@ import starling.events.TouchPhase;
 import starling.events.Event;
 import starling.events.EnterFrameEvent;
 import flash.geom.Point;
+import flash.media.SoundChannel;
 
 class Menu extends Sprite 
 {
@@ -18,6 +19,7 @@ class Menu extends Sprite
     public function new(rootSprite:Sprite)
     {
         super();
+        var menuMusic:SoundChannel = Root.assets.playSound("Beats");
         this.rootSprite = rootSprite;
 
         var stage = Starling.current.stage;
