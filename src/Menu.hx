@@ -9,7 +9,6 @@ import starling.events.TouchPhase;
 import starling.events.Event;
 import starling.events.EnterFrameEvent;
 import flash.geom.Point;
-import flash.media.SoundChannel;
 
 class Menu extends Sprite 
 {
@@ -19,14 +18,7 @@ class Menu extends Sprite
     public function new(rootSprite:Sprite)
     {
         super();
-        var menuMusic:SoundChannel = Root.assets.playSound("Beats");
         this.rootSprite = rootSprite;
-        var stage = Starling.current.stage;
-
-        var title:TextField = new TextField(stage.stageWidth, 400, "Bubble Math", "font", 96, Color.WHITE);
-        title.x = 0;
-        title.y = -150;
-        addChild(title);
         
         var startGameBubble = new Bubble(Root.assets.getTexture("bubble2"), "Start Game", 1, true);
         startGameBubble.x = 100;
@@ -51,26 +43,7 @@ class Menu extends Sprite
         bubbles.add(creditsBubble);    
 
         this.addEventListener("bubbleEvent", function(e:Event) {
-            var pressed:String = e.data.value;
-            if (pressed == "Start Game")
-            {
-                // The block below is approx. how the game starting should work
-                //var game = new Game(this.rootSprite);
-                //rootSprite.addChild(game);
-                //game.startGame();
-                //this.removeFromParent();
-                //this.dispose();
-            }
-            else if (pressed == "Tutorial")
-            {
-                var tutorial = new Tutorial();
-                this.addChild(tutorial);
-            }
-            else if (pressed == "Credits")
-            {
-                var credits = new Credits();
-                this.addChild(credits);
-            }
+            trace(e.data.value);
         });
         this.addEventListener(EnterFrameEvent.ENTER_FRAME, function(event:EnterFrameEvent) {
             for (bubble in bubbles)
@@ -80,8 +53,9 @@ class Menu extends Sprite
                     if (otherBubble != bubble)
                     {                        
                         if (checkCollision(bubble, otherBubble))
-                        {
-                            bubble.invertDeltas();                            
+                        {                                                  
+                            bubble.invertDeltas();
+                            //otherBubble.invertDeltas();
                         }
                     }
                 }
