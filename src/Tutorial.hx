@@ -36,7 +36,7 @@ class Tutorial extends Sprite
 
 		var backButton = new TextField(400, 100, "Back", "font", 72, Color.WHITE);
 		backButton.x = Std.int(stage.stageWidth/2) - 200;
-		backButton.y = 600;
+		backButton.y = stage.stageHeight/3;
 		backButton.border = true;
 		backButton.addEventListener(TouchEvent.TOUCH, backToMenu);
 
