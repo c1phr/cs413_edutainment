@@ -16,11 +16,9 @@ class Root extends Sprite {
     public function start(startup:Startup) {
 
         assets = new AssetManager();
-        assets.enqueue("assets/bubble1.png");
-        assets.enqueue("assets/bubble2.png");
-        assets.enqueue("assets/bubble3.png");
-        assets.enqueue("assets/font/font.fnt");
-        assets.enqueue("assets/font/font.png");
+        assets.enqueue("assets/textures.png");        
+        assets.enqueue("assets/textures.xml");
+        assets.enqueue("assets/font.fnt");
 
         var stage = Starling.current.stage;
         stage.color = 0x91D3FF;
