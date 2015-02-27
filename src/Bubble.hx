@@ -3,7 +3,7 @@ import starling.utils.Color;
 import starling.textures.Texture;
 import starling.display.Sprite;
 import starling.display.Image;
-import flash.geom.Rectangle;
+import flash.geom.Point;
 import starling.core.Starling;
 import starling.events.EnterFrameEvent;
 import starling.events.TouchEvent;
@@ -19,6 +19,8 @@ class Bubble extends Sprite
 	private var randomBound:Int = 5;
 	private var isMenu:Bool;
 	private var bubbleText:String;
+	public var centerPoint:Point;
+	public var radius:Float;
 
 	function new(tex:Texture, bubbleText:String, deltaSpeed:Int, isMenu:Bool)
 	{		
@@ -27,9 +29,11 @@ class Bubble extends Sprite
 		this.isMenu = isMenu;
 		this.bubbleText = bubbleText;
 		var bubbleImage = new Image(tex);
-		this.addChild(bubbleImage);
-		var bubbleTextContainer = new TextField(Std.int(this.width), Std.int(this.height), bubbleText, "serif", 40, Color.WHITE);
+		this.addChild(bubbleImage);		
+		this.radius = this.height/2;		
+		var bubbleTextContainer = new TextField(Std.int(this.width), Std.int(this.height), bubbleText, "font", 40, Color.WHITE);
 		this.addChild(bubbleTextContainer);
+		this.centerPoint = new Point(this.x, this.y);
 
 		if (this.isMenu)
 		{
@@ -62,7 +66,9 @@ class Bubble extends Sprite
 		if (this.isMenu)
 		{
 			this.x += this.deltaX;
+			this.centerPoint.x = this.x;
 			this.y += this.deltaY;
+			this.centerPoint.y = this.y;
 
 			if (this.x < 0 || this.x > (Starling.current.stage.stageWidth - this.width))
 			{
@@ -76,8 +82,7 @@ class Bubble extends Sprite
 		else
 		{
 			// Move the bubbles differently for when in the game itself
-		}
-		
+		}		
 	}
 
 	function setRandomValues()
@@ -94,5 +99,11 @@ class Bubble extends Sprite
         {
             this.deltaY *= -1;
         }       
+	}
+
+	public function invertDeltas()
+	{		
+		this.deltaX *= -1;
+		this.deltaY *= -1;		
 	}
 }
