@@ -32,6 +32,7 @@ class Menu extends Sprite
         var startGameBubble = new Bubble(Root.assets.getTexture("bubble2"), "Start Game", 1, true);
         startGameBubble.x = 100;
         startGameBubble.y = 200;
+
         addChild(startGameBubble);
         bubbles.add(startGameBubble);
 
@@ -44,6 +45,7 @@ class Menu extends Sprite
         var creditsBubble = new Bubble(Root.assets.getTexture("bubble3"), "Credits", 1, true);
         creditsBubble.x = 900;
         creditsBubble.y = 200;
+
         addChild(creditsBubble);
         bubbles.add(creditsBubble);    
 

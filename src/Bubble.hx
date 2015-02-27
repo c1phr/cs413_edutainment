@@ -72,7 +72,14 @@ class Bubble extends Sprite
 			this.y += this.deltaY;
 			this.centerPoint.y = this.y;
 
-			if (this.x < 0 || this.x > (Starling.current.stage.stageWidth - this.width))
+			
+		}
+		else
+		{
+			this.x -= this.deltaX;
+			this.y -= this.deltaY;
+		}		
+		if (this.x < 0 || this.x > (Starling.current.stage.stageWidth - this.width))
 			{
 				this.deltaX *= -1;
 			}
@@ -80,11 +87,6 @@ class Bubble extends Sprite
 			{			
 				this.deltaY *= -1;
 			}
-		}
-		else
-		{
-			this.x -= this.deltaX;
-		}		
 	}
 
 	function setRandomValues()
