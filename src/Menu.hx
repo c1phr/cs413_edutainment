@@ -23,22 +23,18 @@ class Menu extends Sprite
         var startGameBubble = new Bubble(Root.assets.getTexture("bubble2"), "Start Game", 1, true);
         startGameBubble.x = 100;
         startGameBubble.y = 200;
-        startGameBubble.addEventListener(TouchEvent.TOUCH, startGame);
         addChild(startGameBubble);
         bubbles.add(startGameBubble);
-
 
         var tutorialBubble = new Bubble(Root.assets.getTexture("bubble1"), "Tutorial", 1, true);
         tutorialBubble.x = 500;
         tutorialBubble.y = 200;
-        tutorialBubble.addEventListener(TouchEvent.TOUCH, openTutorial);
         addChild(tutorialBubble);
         bubbles.add(tutorialBubble);       
 
         var creditsBubble = new Bubble(Root.assets.getTexture("bubble3"), "Credits", 1, true);
         creditsBubble.x = 900;
         creditsBubble.y = 200;
-        creditsBubble.addEventListener(TouchEvent.TOUCH, openCredits);
         addChild(creditsBubble);
         bubbles.add(creditsBubble);    
 
@@ -72,50 +68,5 @@ class Menu extends Sprite
             return true;
         }
         return false;
-    }
-
-    public function startGame(event:TouchEvent)
-    {
-
-        var touch:Touch = event.getTouch(this, TouchPhase.ENDED);
-        if(touch != null)
-        {
-
-            var game = new Game(rootSprite);
-            rootSprite.addChild(game);
-            game.startGame();
-            this.removeFromParent();
-            this.dispose();
-
-        }
-
-    }
-
-    public function openCredits(event:TouchEvent)
-    {
-
-        var touch:Touch = event.getTouch(this, TouchPhase.ENDED);
-        if (touch != null)
-        {
-
-            var creditsScreen = new Credits();
-            addChild(creditsScreen);
-
-        }
-
-    }
-
-    public function openTutorial(event:TouchEvent)
-    {
-
-        var touch:Touch = event.getTouch(this, TouchPhase.ENDED);
-        if (touch != null)
-        {
-
-            var tutorialScreen = new Tutorial();
-            addChild(tutorialScreen);
-
-        }
-
     }
 }
