@@ -84,6 +84,15 @@ class Bubble extends Sprite
 		else
 		{
 			this.x -= this.deltaX;
+			this.y -= this.deltaY;
+			if (this.x < 0 || this.x > (Starling.current.stage.stageWidth - this.width))
+			{
+				this.deltaX *= -1;
+			}
+			if (this.y < 0 || this.y > (Starling.current.stage.stageHeight - this.height))
+			{			
+				this.deltaY *= -1;
+			}
 		}		
 	}
 

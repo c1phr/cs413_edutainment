@@ -81,8 +81,8 @@ class Game extends Sprite
 
 					bubble = new Bubble(Root.assets.getTexture("bubble1"), strValue, 1, false);
 					addChild(bubble);
-					bubble.x = 1400;
-					bubble.y = 100 + height;
+					bubble.x = Starling.current.stage.stageWidth/2*random();
+					bubble.y = Starling.current.stage.stageHeight/5*random();
 
 					this.addEventListener("bubbleEvent", function(e:Event) {
             			var pressed:String = e.data.value;
