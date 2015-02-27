@@ -41,6 +41,8 @@ class Bubble extends Sprite
 		}        
 		else
 		{
+			this.setRandomValues();
+			updatePosition();
 			// Move bubbles differently when in the actual game
 		}
 
@@ -81,7 +83,7 @@ class Bubble extends Sprite
 		}
 		else
 		{
-			// Move the bubbles differently for when in the game itself
+			this.x -= this.deltaX;
 		}		
 	}
 

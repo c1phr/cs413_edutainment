@@ -19,6 +19,13 @@ class Menu extends Sprite
     {
         super();
         this.rootSprite = rootSprite;
+
+        var stage = Starling.current.stage;
+
+        var title:TextField = new TextField(stage.stageWidth, 400, "Bubble Math", "font", 96, Color.WHITE);
+        title.x = 0;
+        title.y = -150;
+        addChild(title);
         
         var startGameBubble = new Bubble(Root.assets.getTexture("bubble2"), "Start Game", 1, true);
         startGameBubble.x = 100;
@@ -39,8 +46,28 @@ class Menu extends Sprite
         bubbles.add(creditsBubble);    
 
         this.addEventListener("bubbleEvent", function(e:Event) {
-            trace(e.data.value);
+            var pressed:String = e.data.value;
+            if (pressed == "Start Game")
+            {
+                
+                var game = new Game(this.rootSprite);
+                rootSprite.addChild(game);
+                game.startGame();
+                this.removeFromParent();
+                this.dispose();
+            }
+            else if (pressed == "Tutorial")
+            {
+                var tutorial = new Tutorial();
+                this.addChild(tutorial);
+            }
+            else if (pressed == "Credits")
+            {
+                var credits = new Credits();
+                this.addChild(credits);
+            }
         });
+
         this.addEventListener(EnterFrameEvent.ENTER_FRAME, function(event:EnterFrameEvent) {
             for (bubble in bubbles)
             {
@@ -69,4 +96,5 @@ class Menu extends Sprite
         }
         return false;
     }
+
 }
