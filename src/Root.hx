@@ -19,6 +19,8 @@ class Root extends Sprite {
         assets.enqueue("assets/textures.png");        
         assets.enqueue("assets/textures.xml");
         assets.enqueue("assets/font.fnt");
+        assets.enqueue("assets/Beats.mp3");
+        assets.enqueue("assets/DrumBeats.mp3");
 
         var stage = Starling.current.stage;
         stage.color = 0x91D3FF;
