@@ -16,6 +16,8 @@ import starling.utils.MathUtil;
 import flash.media.Sound;
 import flash.media.SoundChannel;
 import haxe.Timer;
+import starling.text.TextField;
+import starling.utils.Color;
 
 class Game extends Sprite
 {
@@ -35,7 +37,7 @@ class Game extends Sprite
 	{
 
 		super();
-		this.rootSprite = rootSprite;
+		this.rootSprite = rootSprite;		
 
 	}
 
@@ -54,6 +56,11 @@ class Game extends Sprite
 			objective = makeObjective(AllPrimes);
 				//solved = false;
 			//}
+
+			var objectiveValue:TextField = new TextField(stage.stageWidth, 400, "" + objective.Value , "font", 96, Color.WHITE);
+			objectiveValue.x = 0;
+			objectiveValue.y = -150;
+			addChild(objectiveValue);
 			
 			Bubbles = new Array<Bubble>();
 			var timer1 = new haxe.Timer(2000);
@@ -85,8 +92,7 @@ class Game extends Sprite
 					bubble.y = 100 + height;
 
 					this.addEventListener("bubbleEvent", function(e:Event) {
-            			var pressed:String = e.data.value;
-            			trace(pressed);
+            			var pressed:String = e.data.value;            			
             			removeChild(bubble);
         			});
 					Bubbles.push(new Bubble(Root.assets.getTexture("bubble1"), strValue, 1, false));

@@ -1,7 +1,7 @@
 import starling.core.Starling;
 
 class Objective{
-	var Value:Int;
+	public var Value:Int;
 	public var PossiblePrimes:Array<Int>;
 	var Completed:Bool;
 	var AllPrimes:Array<Int>;
@@ -36,8 +36,7 @@ class Objective{
 			counter++;
 		}
 		PossiblePrimes[counter] = Value;
-		TotalPossibleVals = counter;
-		trace(Value);
+		TotalPossibleVals = counter;		
 	}
 
 	public function check(val:Int):Bool{
