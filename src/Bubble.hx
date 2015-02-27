@@ -48,7 +48,7 @@ class Bubble extends Sprite
 			var touch = e.getTouch(stage, TouchPhase.ENDED);
 	        if (this.isMenu && touch != null)
 	        {	        	
-	        	dispatchEventWith("bubbleEvent", true, {text: this.bubbleText});
+	        	dispatchEventWith("bubbleEvent", true, {value: this.bubbleText});
 	        } 
 	        if (!this.isMenu && touch != null)
 	        {
