@@ -9,6 +9,7 @@ import starling.events.EnterFrameEvent;
 import starling.events.TouchEvent;
 import starling.events.Touch;
 import starling.events.TouchPhase;
+import starling.events.Event;
 
 class Bubble extends Sprite
 {
@@ -46,13 +47,12 @@ class Bubble extends Sprite
 		this.addEventListener(TouchEvent.TOUCH, function(e:TouchEvent) {
 			var touch = e.getTouch(stage, TouchPhase.ENDED);
 	        if (this.isMenu && touch != null)
-	        {
-	        	// Do stuff with numbers
-	            trace(bubbleText);
+	        {	        	
+	        	dispatchEventWith("bubbleEvent", true, {text: this.bubbleText});
 	        } 
 	        if (!this.isMenu && touch != null)
 	        {
-	        	// Do stuff with numbers
+	        	dispatchEventWith("bubbleEvent", true, {  value: Std.parseInt(this.bubbleText) });
 	        } 
 		});
 	}
