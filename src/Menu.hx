@@ -30,20 +30,20 @@ class Menu extends Sprite
         addChild(title);
         
         var startGameBubble = new Bubble(Root.assets.getTexture("bubble2"), "Start Game", 1, true);
-        startGameBubble.x = Starling.current.stage.stageWidth/9;
-        startGameBubble.y = Starling.current.stage.stageHeight/9;
+        startGameBubble.x = 100;
+        startGameBubble.y = 200;
         addChild(startGameBubble);
         bubbles.add(startGameBubble);
 
         var tutorialBubble = new Bubble(Root.assets.getTexture("bubble1"), "Tutorial", 1, true);
-        tutorialBubble.x = Starling.current.stage.stageWidth/5;
-        tutorialBubble.y = Starling.current.stage.stageHeight/5;
+        tutorialBubble.x = 500;
+        tutorialBubble.y = 200;
         addChild(tutorialBubble);
         bubbles.add(tutorialBubble);       
 
         var creditsBubble = new Bubble(Root.assets.getTexture("bubble3"), "Credits", 1, true);
-        creditsBubble.x = Starling.current.stage.stageWidth/2;
-        creditsBubble.y = Starling.current.stage.stageHeight/2;
+        creditsBubble.x = 900;
+        creditsBubble.y = 200;
         addChild(creditsBubble);
         bubbles.add(creditsBubble);    
 
