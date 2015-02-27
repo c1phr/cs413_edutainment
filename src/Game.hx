@@ -78,11 +78,7 @@ class Game extends Sprite
 
 					var height:Float = random() * 400;
 
-					var arrlength:Int = Primes.length;
-
-					var chooseIndex:Int = Math.round(random() * arrlength);
-
-					var value:Int = Primes[chooseIndex];
+					var value:Int = Primes[Std.random(Primes.length)];
 
 					var strValue:String = "" + value;
 
@@ -92,7 +88,9 @@ class Game extends Sprite
 					bubble.y = 100 + height;
 
 					this.addEventListener("bubbleEvent", function(e:Event) {
-            			var pressed:String = e.data.value;            			
+            			var pressed:String = e.data.value;
+                        var found:Bool = objective.check(e.data.value);
+                        objectiveValue.text = "" + objective.Value;    			
             			removeChild(bubble);
         			});
 					Bubbles.push(new Bubble(Root.assets.getTexture("bubble1"), strValue, 1, false));
@@ -124,7 +122,10 @@ class Game extends Sprite
 	public function makeObjective(Primes:Array<Int>) : Objective{
 
 		var obj:Objective;
-		var mag:Int = Math.round(random() * 2)+1;
+		var mag:Int = 0;
+        while(mag < 1){
+            mag = Std.random(4);
+        }
 
 		obj = new Objective(mag, Primes);
 
