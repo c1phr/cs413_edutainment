@@ -2,7 +2,7 @@ import starling.core.Starling;
 
 class Objective{
 	var Value:Int;
-	var PossiblePrimes:Array<Int>;
+	public var PossiblePrimes:Array<Int>;
 	var Completed:Bool;
 	var AllPrimes:Array<Int>;
 	var oom:Int;
@@ -77,5 +77,9 @@ class Objective{
 			}
 		}
 		return false;
+	}
+
+	public function getPossiblePrimes():Array<Int>{
+		return PossiblePrimes;
 	}
 }
