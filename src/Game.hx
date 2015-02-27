@@ -55,7 +55,7 @@ class Game extends Sprite
 				//solved = false;
 			//}
 			
-			
+			Bubbles = new Array<Bubble>();
 			var timer1 = new haxe.Timer(2000);
 			timer1.run;// = increment(inc);
 			var timer = new haxe.Timer(2000);
@@ -64,9 +64,36 @@ class Game extends Sprite
 			rootSprite.addEventListener(EnterFrameEvent.ENTER_FRAME, function(event:EnterFrameEvent) {
 				counter = counter+1;
 				if(counter == 120){
-					addBubble(Bubbles, inc);
-					inc = inc+1;
+					//addBubble(Bubbles, inc);
+					var bubble:Bubble;
+
+					Primes = objective.PossiblePrimes;
+
+					var height:Float = random() * 400;
+
+					var arrlength:Int = Primes.length;
+
+					var chooseIndex:Int = Math.round(random() * arrlength);
+
+					var value:Int = Primes[chooseIndex];
+
+					var strValue:String = "" + value;
+
+					bubble = new Bubble(Root.assets.getTexture("bubble1"), strValue, 1, false);
+					addChild(bubble);
+					bubble.x = 1400;
+					bubble.y = 100 + height;
+
+					this.addEventListener("bubbleEvent", function(e:Event) {
+            			var pressed:String = e.data.value;
+            			trace(pressed);
+            			removeChild(bubble);
+        			});
+					Bubbles.push(new Bubble(Root.assets.getTexture("bubble1"), strValue, 1, false));
+					//inc = inc+1;
 					counter = 0;
+					//rootSprite.addChild(Bubbles[0]);
+					//trace("butts");
 				}
 				//trace("asdfasdfa");
 			});
@@ -82,31 +109,10 @@ class Game extends Sprite
 
 	public function addBubble(Bubbles:Array<Bubble>, inc:Int)
 	{
-		var bubble:Bubble;
+		
 
-		Primes = objective.PossiblePrimes;
-
-		var height:Float = random() * 400;
-
-		var arrlength:Int = Primes.length;
-
-		var chooseIndex:Int = Math.round(random() * arrlength);
-
-		var value:Int = Primes[chooseIndex];
-
-		var strValue:String = "" + value;
-
-		bubble = new Bubble(Root.assets.getTexture("bubble1"), strValue, 1, false);
-		addChild(bubble);
-		bubble.x = 1400;
-		bubble.y = 100 + height;
-
-		this.addEventListener("bubbleEvent", function(e:Event) {
-            	var pressed:String = e.data.value;
-            	trace(pressed);
-        });
-
-       Bubbles[inc] = bubble;
+       //Bubbles[inc] = bubble;
+       //trace(Bubbles[inc]);
 	}
 
 	public function makeObjective(Primes:Array<Int>) : Objective{
