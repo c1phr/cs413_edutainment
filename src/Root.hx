@@ -34,6 +34,7 @@ class Root extends Sprite {
                 });
                 var menu = new Menu(this);
                 this.addChild(menu);
+
             }
 
         });
